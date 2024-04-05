@@ -46,13 +46,11 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jtuser" pref="247" max="32767" attributes="0"/>
                           <Component id="jpassword" alignment="0" max="32767" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabelRegister" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="bexit" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                                  <Component id="blogin" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Component id="jLabelRegister" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="bexit" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                              <Component id="blogin" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>

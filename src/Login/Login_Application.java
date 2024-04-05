@@ -5,18 +5,27 @@
 package Login;
 
 import javax.swing.JOptionPane;
-
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author kpach
  */
 public class Login_Application extends javax.swing.JFrame {
-
+       private Connection con;     
     /**
      * Creates new form Login_Application
      */
     public Login_Application() {
         initComponents();
+        
+           try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "root1234");
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Failed to connect to the database: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }//            Statement stmt = con.createStatement();
     }
 
     /**
@@ -161,17 +170,38 @@ public class Login_Application extends javax.swing.JFrame {
         else if(jpassword.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please fill out Password");
         }
-        else if(jtuser.getText().contains("Kalyani")&& jpassword.getText().contains("12345678")){
+
+        try {
+        String username = jtuser.getText();
+        String password = jpassword.getText();
+        System.out.println(username);
+        System.out.println(password);
+
+        // Create SQL query to check username and password
+        String query = "SELECT * FROM users WHERE name = ? AND password = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, username);
+        pstmt.setString(2, password);
+        ResultSet rs = pstmt.executeQuery();
+
+        // Check if any rows are returned
+        if (rs.next()) {
+            // User found, login successful
             JOptionPane.showMessageDialog(null, "Login Successful");
+        } else {
+            // No user found, login failed
+            JOptionPane.showMessageDialog(null, "Wrong username or password.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Wrong username or Password!!!","Message",JOptionPane.ERROR_MESSAGE);
-        }
-        String user=jtuser.getText();
-        String password=jpassword.getText();
+
+        // Close resources
+        pstmt.close();
+        rs.close();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "An error occurred while attempting to log in: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
         
         
-        System.out.println("user"+user+"password:"+password);
+//        System.out.println("user"+user+"password:"+password);
         
     }//GEN-LAST:event_bloginActionPerformed
 

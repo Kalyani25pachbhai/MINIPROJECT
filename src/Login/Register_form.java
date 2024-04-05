@@ -4,17 +4,26 @@
  */
 package Login;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author kpach
  */
 public class Register_form extends javax.swing.JFrame {
-
+    private Connection con;
     /**
      * Creates new form Register_form
      */
     public Register_form() {
         initComponents();
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "root1234");
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Failed to connect to the database: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }// 
     }
 
     /**
@@ -285,7 +294,34 @@ public class Register_form extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
-        // TODO add your handling code here:
+         try {
+//        String username = jtuser.getText();
+//        String password = jpassword.getText();
+//        System.out.println(username);
+//        System.out.println(password);
+
+        // Create SQL query to check username and password
+        String query = "insert into user values()";
+        PreparedStatement pstmt = con.prepareStatement(query);
+//        pstmt.setString(1, username);
+//        pstmt.setString(2, password);
+//        ResultSet rs = pstmt.executeQuery();
+//
+//        // Check if any rows are returned
+//        if (rs.next()) {
+//            // User found, login successful
+//            JOptionPane.showMessageDialog(null, "Login Successful");
+//        } else {
+//            // No user found, login failed
+//            JOptionPane.showMessageDialog(null, "Wrong username or password.", "Error", JOptionPane.ERROR_MESSAGE);
+//        }
+
+        // Close resources
+//        pstmt.close();
+//        rs.close();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "An error occurred while attempting to log in: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
         
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
