@@ -178,7 +178,7 @@ public class Login_Application extends javax.swing.JFrame {
         System.out.println(password);
 
         // Create SQL query to check username and password
-        String query = "SELECT * FROM users WHERE name = ? AND password = ?";
+        String query = "SELECT * FROM users WHERE username = ? AND password = ?";
         PreparedStatement pstmt = con.prepareStatement(query);
         pstmt.setString(1, username);
         pstmt.setString(2, password);

@@ -290,31 +290,29 @@ public class Register_form extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
          try {
-//        String username = jtuser.getText();
-//        String password = jpassword.getText();
+        String username = jtuser3.getText();
+        String email = jtuser1.getText();
+        String password=jtuser4.getText();
+        String role= (String) jComboBox1.getSelectedItem();
 //        System.out.println(username);
 //        System.out.println(password);
 
         // Create SQL query to check username and password
-        String query = "insert into user values()";
+        String query = "insert into users values(1,?,?,?,?)";
         PreparedStatement pstmt = con.prepareStatement(query);
-//        pstmt.setString(1, username);
-//        pstmt.setString(2, password);
-//        ResultSet rs = pstmt.executeQuery();
-//
-//        // Check if any rows are returned
-//        if (rs.next()) {
-//            // User found, login successful
-//            JOptionPane.showMessageDialog(null, "Login Successful");
-//        } else {
-//            // No user found, login failed
-//            JOptionPane.showMessageDialog(null, "Wrong username or password.", "Error", JOptionPane.ERROR_MESSAGE);
-//        }
+        
+        pstmt.setString(1, username);
+        pstmt.setString(2, email);
+                pstmt.setString(3, password);
+        pstmt.setString(4, role);
+
+        ResultSet rs = pstmt.executeQuery();
+            JOptionPane.showMessageDialog(null, "Login Successful");
 
         // Close resources
 //        pstmt.close();
