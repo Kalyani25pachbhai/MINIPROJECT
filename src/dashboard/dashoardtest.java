@@ -41,11 +41,12 @@ public class dashoardtest extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollBar1 = new javax.swing.JScrollBar();
+        jPanel7 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(860, 850));
@@ -55,8 +56,6 @@ public class dashoardtest extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("DASHBOARD");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Untitled design (1).png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 80));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 102));
@@ -216,6 +215,9 @@ public class dashoardtest extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 800, -1));
 
+        jLabel1.setBackground(new java.awt.Color(51, 51, 255));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 850));
+
         jPanel3.setBackground(new java.awt.Color(0, 0, 102));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -249,11 +251,21 @@ public class dashoardtest extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 800, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Untitled design (1).png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 850));
-
         jScrollBar1.setPreferredSize(new java.awt.Dimension(20, 850));
         getContentPane().add(jScrollBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 20, 850));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, 800, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -314,6 +326,7 @@ public class dashoardtest extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollBar jScrollBar1;
     // End of variables declaration//GEN-END:variables
 }

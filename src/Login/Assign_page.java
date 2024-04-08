@@ -4,6 +4,7 @@
  */
 package Login;
 
+import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,11 +13,15 @@ import javax.swing.JOptionPane;
  */
 public class Assign_page extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Assign_page
-     */
+       private java.sql.Connection con;     
     public Assign_page() {
         initComponents();
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "root1234");
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Failed to connect to the database: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }//
     }
 
     /**
@@ -35,7 +40,7 @@ public class Assign_page extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         bdeveloperemail = new javax.swing.JTextField();
-        jbugname = new javax.swing.JTextField();
+        jbug_id = new javax.swing.JTextField();
         jtuser2 = new javax.swing.JTextField();
         blogin = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -67,9 +72,9 @@ public class Assign_page extends javax.swing.JFrame {
             }
         });
 
-        jbugname.addActionListener(new java.awt.event.ActionListener() {
+        jbug_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbugnameActionPerformed(evt);
+                jbug_idActionPerformed(evt);
             }
         });
 
@@ -127,7 +132,7 @@ public class Assign_page extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbugname, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jbug_id, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
@@ -146,7 +151,7 @@ public class Assign_page extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jbugname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbug_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
@@ -163,23 +168,28 @@ public class Assign_page extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bdeveloperemailActionPerformed
 
-    private void jbugnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbugnameActionPerformed
+    private void jbug_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbug_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbugnameActionPerformed
+    }//GEN-LAST:event_jbug_idActionPerformed
 
     private void jtuser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtuser2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtuser2ActionPerformed
 
     private void bloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bloginActionPerformed
-        // TODO add your handling code here:
+
+//        System.out.println(dev_id);
+//                System.out.println(dev_email);
+//        System.out.println(bug_id);
+//        System.out.println(bug_name);
+
         if(jtuser2.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please fill out Developer's id!!");
         }
-        if(bdeveloperemail.getText().equals("")){
+        if(jbug_id.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please fill out Bug id!!");
         }
-        if(jbugname.getText().equals("")){
+        if(jbugname1.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please fill out Bug name!!");
         }
         if(bdeveloperemail.getText().equals("")){
@@ -187,7 +197,29 @@ public class Assign_page extends javax.swing.JFrame {
         }
 
         else{
-            JOptionPane.showMessageDialog(null, "Successful Assigned");
+            try{        
+String dev_id=jtuser2.getText();
+        String dev_email=bdeveloperemail.getText();
+        String bug_id=jbug_id.getText();
+        String bug_name=jbugname1.getText();
+        String query = "insert into assign values(?,?,?,?)";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        
+        pstmt.setString(1, dev_id);
+        pstmt.setString(2, bug_id);
+                pstmt.setString(3, bug_name);
+        pstmt.setString(4, dev_email);
+
+        ResultSet rs = pstmt.executeQuery();
+                    JOptionPane.showMessageDialog(null, "Successful Assigned");
+
+
+        // Close resources
+//        pstmt.close();
+//        rs.close();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "An error occurred while attempting to log in: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
         }
         //        String user=jtuser.getText();
         //        String password=jpassword.getText();
@@ -244,7 +276,7 @@ public class Assign_page extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jbugname;
+    private javax.swing.JTextField jbug_id;
     private javax.swing.JTextField jbugname1;
     private javax.swing.JTextField jtuser2;
     // End of variables declaration//GEN-END:variables
