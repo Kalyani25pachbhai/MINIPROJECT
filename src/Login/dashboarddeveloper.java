@@ -1,3 +1,5 @@
+package Login;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -55,7 +57,6 @@ public class dashboarddeveloper extends javax.swing.JFrame {
         jLabel3.setText("DASHBOARD");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Untitled design (1).png"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 80));
 
@@ -248,8 +249,6 @@ public class dashboarddeveloper extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Untitled design (1).png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 850));
         getContentPane().add(jScrollBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 20, 850));
 
