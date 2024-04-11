@@ -120,7 +120,6 @@ public class dashboarddeveloper extends javax.swing.JFrame {
         jButton4.setText("Show");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1550, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Georgia", 1, 48)); // NOI18N
@@ -135,6 +134,11 @@ public class dashboarddeveloper extends javax.swing.JFrame {
         jButton9.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
         jButton9.setText("Search");
         jButton9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -501,6 +505,17 @@ public class dashboarddeveloper extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Description of the bug:"+bugDataMap.get(21)[1]);
 
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        BugsRecords_page bug = new BugsRecords_page();
+        bug.setVisible(true);
+        bug.pack();
+        bug.setLocationRelativeTo(null);
+        //rgf.setDefaultCloseOpertaion(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
