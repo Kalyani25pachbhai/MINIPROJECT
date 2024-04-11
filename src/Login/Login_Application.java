@@ -38,125 +38,67 @@ public class Login_Application extends javax.swing.JFrame {
     private void initComponents() {
 
         jColorChooser1 = new javax.swing.JColorChooser();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jtuser = new javax.swing.JTextField();
         blogin = new javax.swing.JButton();
         bexit = new javax.swing.JButton();
         jpassword = new javax.swing.JPasswordField();
         jcshow_password = new javax.swing.JCheckBox();
-        jLabelRegister = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(new java.awt.Color(255, 204, 0));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("LOGIN APPLICATION");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Username");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Password");
-
+        jtuser.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
+        jtuser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jtuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtuserActionPerformed(evt);
             }
         });
+        getContentPane().add(jtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 560, 40));
 
-        blogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        blogin.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
         blogin.setText("Login");
+        blogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         blogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bloginActionPerformed(evt);
             }
         });
+        getContentPane().add(blogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 620, -1, -1));
 
-        bexit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bexit.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
         bexit.setText("Exit");
+        bexit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         bexit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bexitActionPerformed(evt);
             }
         });
+        getContentPane().add(bexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, -1, -1));
 
+        jpassword.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
+        jpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jpasswordActionPerformed(evt);
             }
         });
+        getContentPane().add(jpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 372, 560, 40));
 
+        jcshow_password.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
         jcshow_password.setText("Show Password");
+        jcshow_password.setToolTipText("");
         jcshow_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcshow_passwordActionPerformed(evt);
             }
         });
+        getContentPane().add(jcshow_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(479, 450, 270, 40));
 
-        jLabelRegister.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelRegister.setText("Click here to create a new account");
-        jLabelRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelRegister.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelRegisterMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 335, Short.MAX_VALUE)
-                        .addComponent(jcshow_password))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtuser, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                            .addComponent(jpassword)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabelRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(bexit)
-                                    .addGap(93, 93, 93)
-                                    .addComponent(blogin))))))
-                .addGap(56, 56, 56))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jtuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jcshow_password)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(blogin)
-                    .addComponent(bexit))
-                .addGap(18, 18, 18)
-                .addComponent(jLabelRegister)
-                .addGap(23, 23, 23))
-        );
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/Click here to new account (2).png"))); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 768));
 
         pack();
         setLocationRelativeTo(null);
@@ -228,16 +170,6 @@ public class Login_Application extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jpasswordActionPerformed
 
-    private void jLabelRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegisterMouseClicked
-        // TODO add your handling code here:
-        Register_form rgf = new Register_form();
-        rgf.setVisible(true);
-        rgf.pack();
-        rgf.setLocationRelativeTo(null);
-        //rgf.setDefaultCloseOpertaion(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_jLabelRegisterMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -274,13 +206,10 @@ public class Login_Application extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
     private javax.swing.JButton bexit;
     private javax.swing.JButton blogin;
     private javax.swing.JColorChooser jColorChooser1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelRegister;
     private javax.swing.JCheckBox jcshow_password;
     private javax.swing.JPasswordField jpassword;
     private javax.swing.JTextField jtuser;

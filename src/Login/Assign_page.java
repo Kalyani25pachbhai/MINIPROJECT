@@ -35,16 +35,12 @@ public class Assign_page extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        bdeveloperemail = new javax.swing.JTextField();
-        jbug_id = new javax.swing.JTextField();
-        jtuser2 = new javax.swing.JTextField();
+        jtuser = new javax.swing.JTextField();
+        jtuser3 = new javax.swing.JTextField();
+        jtuser4 = new javax.swing.JTextField();
+        jtuser5 = new javax.swing.JTextField();
         blogin = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jbugname1 = new javax.swing.JTextField();
+        bg = new javax.swing.JLabel();
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Username");
@@ -53,128 +49,63 @@ public class Assign_page extends javax.swing.JFrame {
         jLabel4.setText("Developer_id");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("ASSIGN PAGE");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Developer_id");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Bug_id");
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Bug_name");
-
-        bdeveloperemail.addActionListener(new java.awt.event.ActionListener() {
+        jtuser.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
+        jtuser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jtuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bdeveloperemailActionPerformed(evt);
+                jtuserActionPerformed(evt);
             }
         });
+        getContentPane().add(jtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 540, 40));
 
-        jbug_id.addActionListener(new java.awt.event.ActionListener() {
+        jtuser3.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
+        jtuser3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jtuser3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbug_idActionPerformed(evt);
+                jtuser3ActionPerformed(evt);
             }
         });
+        getContentPane().add(jtuser3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 540, 40));
 
-        jtuser2.addActionListener(new java.awt.event.ActionListener() {
+        jtuser4.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
+        jtuser4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jtuser4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtuser2ActionPerformed(evt);
+                jtuser4ActionPerformed(evt);
             }
         });
+        getContentPane().add(jtuser4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 540, 40));
 
-        blogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jtuser5.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
+        jtuser5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jtuser5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtuser5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jtuser5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 540, 40));
+
+        blogin.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
         blogin.setText("Submit");
+        blogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         blogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bloginActionPerformed(evt);
             }
         });
+        getContentPane().add(blogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 590, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Developer_email");
-
-        jbugname1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbugname1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(101, 101, 101))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(blogin))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jtuser2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                                .addComponent(bdeveloperemail, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbugname1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbug_id, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(32, 32, 32))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jtuser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(bdeveloperemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jbug_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(jbugname1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(blogin)
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/Click here to new account (4).png"))); // NOI18N
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 768));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bdeveloperemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdeveloperemailActionPerformed
+    private void jtuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtuserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bdeveloperemailActionPerformed
-
-    private void jbug_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbug_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbug_idActionPerformed
-
-    private void jtuser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtuser2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtuser2ActionPerformed
+    }//GEN-LAST:event_jtuserActionPerformed
 
     private void bloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bloginActionPerformed
 
@@ -183,25 +114,25 @@ public class Assign_page extends javax.swing.JFrame {
 //        System.out.println(bug_id);
 //        System.out.println(bug_name);
 
-        if(jtuser2.getText().equals("")){
+        if(jtuser3.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please fill out Developer's id!!");
         }
-        if(jbug_id.getText().equals("")){
+        if(jtuser5.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please fill out Bug id!!");
         }
-        if(jbugname1.getText().equals("")){
+        if(jtuser.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please fill out Bug name!!");
         }
-        if(bdeveloperemail.getText().equals("")){
+        if(jtuser4.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please fill out developer email!!");
         }
 
         else{
             try{        
-String dev_id=jtuser2.getText();
-        String dev_email=bdeveloperemail.getText();
-        String bug_id=jbug_id.getText();
-        String bug_name=jbugname1.getText();
+String dev_id=jtuser3.getText();
+        String dev_email=jtuser4.getText();
+        String bug_id=jtuser5.getText();
+        String bug_name=jtuser.getText();
         String query = "insert into assign values(?,?,?,?)";
         PreparedStatement pstmt = con.prepareStatement(query);
         
@@ -227,9 +158,17 @@ String dev_id=jtuser2.getText();
         //        System.out.println("user"+user+"password:"+password);
     }//GEN-LAST:event_bloginActionPerformed
 
-    private void jbugname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbugname1ActionPerformed
+    private void jtuser3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtuser3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbugname1ActionPerformed
+    }//GEN-LAST:event_jtuser3ActionPerformed
+
+    private void jtuser4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtuser4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtuser4ActionPerformed
+
+    private void jtuser5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtuser5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtuser5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,17 +206,13 @@ String dev_id=jtuser2.getText();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bdeveloperemail;
+    private javax.swing.JLabel bg;
     private javax.swing.JButton blogin;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jbug_id;
-    private javax.swing.JTextField jbugname1;
-    private javax.swing.JTextField jtuser2;
+    private javax.swing.JTextField jtuser;
+    private javax.swing.JTextField jtuser3;
+    private javax.swing.JTextField jtuser4;
+    private javax.swing.JTextField jtuser5;
     // End of variables declaration//GEN-END:variables
 }
