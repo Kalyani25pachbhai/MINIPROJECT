@@ -1,5 +1,7 @@
 package Login;
-
+import java.sql.*;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,12 +12,68 @@ package Login;
  * @author itste
  */
 public class dashboarddeveloper extends javax.swing.JFrame {
-
+    private Connection con;
+    private HashMap<Integer,String[]>bugDataMap;
     /**
-     * Creates new form dashboarddeveloper
+     * Creates new form 
      */
-    public dashboarddeveloper() {
+   public dashboarddeveloper() {
         initComponents();
+        bugDataMap = new HashMap<>(); // Initialize bugDataMap
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "root1234");
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Failed to connect to the database: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }//
+        String query = "select bug_title, bug_desc, bug_id, bug_type, bug_status from bugs";
+        try {
+    PreparedStatement statement = con.prepareStatement(query);
+    ResultSet rs = statement.executeQuery();
+    int labelIndex = 1; // Initialize label index
+    while (rs.next()) {
+        int bugId = rs.getInt("bug_id");
+        String bug_title = rs.getString("bug_title");
+        String bug_desc = rs.getString("bug_desc");
+        String bug_type = rs.getString("bug_type");
+        String bugStatus = rs.getString("bug_status");
+
+        String[] bugData = {bug_title, bug_desc, bug_type, bugStatus};
+        bugDataMap.put(bugId, bugData);
+        
+        // Update jLabels dynamically for each bug ID
+        switch (labelIndex) {
+            case 1:
+                jLabel10.setText("Bug Id: " + bugId + "                         Bug Name: " + bugDataMap.get(bugId)[0]);
+                jLabel9.setText("Bug Type: " + bugDataMap.get(bugId)[2] + "                         Bug Status: " + bugDataMap.get(bugId)[3]);
+                break;
+            case 2:
+                jLabel6.setText("Bug Id: " + bugId + "                         Bug Name: " + bugDataMap.get(bugId)[0]);
+                jLabel5.setText("Bug Type: " + bugDataMap.get(bugId)[2] + "                         Bug Status: " + bugDataMap.get(bugId)[3]);
+                break;
+            case 3:
+                jLabel8.setText("Bug Id: " + bugId + "                         Bug Name: " + bugDataMap.get(bugId)[0]);
+                jLabel7.setText("Bug Type: " + bugDataMap.get(bugId)[2] + "                         Bug Status: " + bugDataMap.get(bugId)[3]);
+                break;
+            case 4:
+                jLabel12.setText("Bug Id: " + bugId + "                         Bug Name: " + bugDataMap.get(bugId)[0]);
+                jLabel11.setText("Bug Type: " + bugDataMap.get(bugId)[2] + "                         Bug Status: " + bugDataMap.get(bugId)[3]);
+                break;
+            case 5:
+                jLabel14.setText("Bug Id: " + bugId + "                         Bug Name: " + bugDataMap.get(bugId)[0]);
+                jLabel13.setText("Bug Type: " + bugDataMap.get(bugId)[2] + "                         Bug Status: " + bugDataMap.get(bugId)[3]);
+                break;
+            default:
+                break;
+        }
+        
+        // Increment label index
+        labelIndex++;
+    }
+} catch (SQLException e) {
+    JOptionPane.showMessageDialog(this, "Error fetching bug data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+}
+
     }
 
     /**
@@ -398,22 +456,50 @@ public class dashboarddeveloper extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+//if (bugDataMap.containsKey(2)) {
+    // Display the description of the bug
+    JOptionPane.showMessageDialog(null, "Description of the bug: " + bugDataMap.get(18)[1]);
+//} else {
+    // Handle the case when the bug with ID 2 is not found
+//    JOptionPane.showMessageDialog(null, "Bug with ID 2 not found");
+//}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+
+//if (bugDataMap.containsKey(3)) {
+    // Display the description of the bug
+    JOptionPane.showMessageDialog(null, "Description of the bug: " + bugDataMap.get(19)[1]);
+//} else {
+//    // Handle the case when the bug with ID 2 is not found
+//    JOptionPane.showMessageDialog(null, "Bug with ID 2 not found");
+//}
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Description of the bug:"+bugDataMap.get(1)[1]);
+
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+
+//if (bugDataMap.containsKey(4)) {
+    // Display the description of the bug
+    JOptionPane.showMessageDialog(null, "Description of the bug: " + bugDataMap.get(20)[1]);
+//} else {
+//    // Handle the case when the bug with ID 2 is not found
+//    JOptionPane.showMessageDialog(null, "Bug with ID 4 not found");
+//}
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+                JOptionPane.showMessageDialog(null, "Description of the bug:"+bugDataMap.get(21)[1]);
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
