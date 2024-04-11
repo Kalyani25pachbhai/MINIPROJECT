@@ -6,6 +6,10 @@ package Login;
 
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 
 /**
@@ -168,10 +172,31 @@ public class AddBugs_page extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         String bug_id=jtuser3.getText();
+        int bugIdInt = Integer.parseInt(bug_id);
+
         String bug_title=jtuser2.getText();
         String bug_type=(String)jComboBox1.getSelectedItem();
         String bug_desc=jTextArea1.getText();
+//        Date currentDate = new Date();
+       LocalDate today = LocalDate.now();
         
+        // Define a date formatter
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        
+        // Format today's date using the formatter
+        String formattedDate = today.format(formatter);
+        
+        // Print today's date
+        System.out.println("Today's Date: " + formattedDate);
+
+
+//        String dateString=currentDate.toString();
+        System.out.println(bug_id);
+                System.out.println(bug_title);
+        System.out.println(bug_type);
+        System.out.println(bug_desc);
+        System.out.println(formattedDate);
+
         if(jtuser3.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Please fill out Bug's id!!");
         }
@@ -182,21 +207,27 @@ public class AddBugs_page extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please fill out Bug description!!");
         }
         else{
+            
            try{
-               String query = "insert into bugs values(?,?,?,?,?)";
-        PreparedStatement pstmt = con.prepareStatement(query);
-        
-        pstmt.setString(1, bug_id);
-        pstmt.setString(2, bug_title);
-         pstmt.setString(3, bug_desc);
-                pstmt.setString(4,"open");
-                pstmt.setString(5,"frontend");
-                
-                
+              String query = "INSERT INTO bugs (bug_id, bug_title, bug_description, bug_status, type, posted_at) VALUES (?, ?, ?, ?, ?, ?)";
+PreparedStatement pstmt = con.prepareStatement(query);
+
+// Set dynamic values
+pstmt.setInt(1, 102);  // assuming 102 is the fixed bug_id
+pstmt.setString(2, bug_title);
+pstmt.setString(3, bug_desc);
+pstmt.setString(4, "open");
+pstmt.setString(5, "frontend");
+pstmt.setString(6, formattedDate);
+
+// Execute the query
+//int rowsAffected = pstmt.executeUpdate();                
+                int rowsAffected = pstmt.executeUpdate();
+
        
 
         ResultSet rs = pstmt.executeQuery();
-                    JOptionPane.showMessageDialog(null, "Successful Assigned");
+                    JOptionPane.showMessageDialog(null, "Bug added Successfully ");
            } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "An error occurred while attempting to log in: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }

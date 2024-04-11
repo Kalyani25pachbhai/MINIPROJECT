@@ -299,8 +299,6 @@ public class Register_form extends javax.swing.JFrame {
         String email = jtuser1.getText();
         String password=jtuser4.getText();
         String role= (String) jComboBox1.getSelectedItem();
-//        System.out.println(username);
-//        System.out.println(password);
 
         // Create SQL query to check username and password
         String query = "insert into users values(1,?,?,?,?)";
@@ -308,15 +306,13 @@ public class Register_form extends javax.swing.JFrame {
         
         pstmt.setString(1, username);
         pstmt.setString(2, email);
-                pstmt.setString(3, password);
+        pstmt.setString(3, password);
         pstmt.setString(4, role);
 
         ResultSet rs = pstmt.executeQuery();
-            JOptionPane.showMessageDialog(null, "Login Successful");
+        JOptionPane.showMessageDialog(null, "Login Successful");
 
-        // Close resources
-//        pstmt.close();
-//        rs.close();
+
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "An error occurred while attempting to log in: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
