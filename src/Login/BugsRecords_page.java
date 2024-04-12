@@ -5,18 +5,60 @@
 package Login;
 
 import javax.swing.RowFilter;
-
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author kpach
  */
 public class BugsRecords_page extends javax.swing.JFrame {
+    private Connection con;
+        private JTable bugTable;
+    private DefaultTableModel tableModel;
 
     /**
      * Creates new form BugsRecords_page
      */
     public BugsRecords_page() {
         initComponents();
+        tableModel = new DefaultTableModel();
+        bugTable = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(bugTable);
+        add(scrollPane);
+        bugTable.setVisible(true);
+        // Set column headers
+        tableModel.addColumn("Bug ID");
+
+        tableModel.addColumn("Bug Title");
+        tableModel.addColumn("Bug Type");
+        tableModel.addColumn("Bug Status");
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "root1234");
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Failed to connect to the database: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }// 
+        try{
+        String query="select bug_id,bug_title,bug_type,bug_status from bugs";
+        PreparedStatement statement =con.prepareStatement(query);
+        ResultSet rs=statement.executeQuery();
+        while(rs.next()){
+            String bugTitle=rs.getString("bug_title");
+            int bugId=rs.getInt("bug_id");
+            String bugType=rs.getString("bug_type");
+            String bugStatus=rs.getString("bug_status");
+            
+            tableModel.addRow(new Object[]{bugId,bugTitle,bugType, bugStatus});
+
+            
+        }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+                
     }
 
     /**
