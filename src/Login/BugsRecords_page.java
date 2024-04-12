@@ -4,9 +4,12 @@
  */
 package Login;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import javax.swing.RowFilter;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -23,18 +26,31 @@ public class BugsRecords_page extends javax.swing.JFrame {
      * Creates new form BugsRecords_page
      */
     public BugsRecords_page() {
-        initComponents();
+         initComponents();
+        getContentPane().setLayout(new BorderLayout());
+
+        // Initialize table model and table
         tableModel = new DefaultTableModel();
         bugTable = new JTable(tableModel);
-        JScrollPane scrollPane = new JScrollPane(bugTable);
-        add(scrollPane);
-        bugTable.setVisible(true);
+
         // Set column headers
         tableModel.addColumn("Bug ID");
-
         tableModel.addColumn("Bug Title");
         tableModel.addColumn("Bug Type");
         tableModel.addColumn("Bug Status");
+
+        // Add table to a scroll pane
+        JScrollPane scrollPane = new JScrollPane(bugTable);
+
+        // Add scroll pane to the center of the frame
+        getContentPane().add(scrollPane, BorderLayout.CENTER);
+
+        // Create panel to hold the table at the bottom
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        bottomPanel.add(scrollPane); // Add scroll pane to the panel
+
+        // Add the panel to the bottom of the frame
+        getContentPane().add(bottomPanel, BorderLayout.SOUTH);
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "root1234");
@@ -139,6 +155,7 @@ public class BugsRecords_page extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new BugsRecords_page().setVisible(true);
             }
         });
