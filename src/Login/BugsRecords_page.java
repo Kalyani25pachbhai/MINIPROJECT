@@ -12,7 +12,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
+//import com.itextpdf.text.Document;
+//import com.itextpdf.text.Paragraph;
+//import com.itextpdf.text.pdf.PdfWriter;
+//import java.io.FileOutputStream;
+
 /**
  *
  * @author kpach
@@ -21,6 +27,7 @@ public class BugsRecords_page extends javax.swing.JFrame {
     private Connection con;
         private JTable bugTable;
     private DefaultTableModel tableModel;
+    private JTextArea textArea;
 
     /**
      * Creates new form BugsRecords_page
@@ -28,6 +35,13 @@ public class BugsRecords_page extends javax.swing.JFrame {
     public BugsRecords_page() {
          initComponents();
         getContentPane().setLayout(new BorderLayout());
+         setTitle("Closed Bugs Report");
+        setSize(400, 300);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        textArea = new JTextArea();
+        textArea.setEditable(false);
 
         // Initialize table model and table
         tableModel = new DefaultTableModel();
@@ -61,6 +75,13 @@ public class BugsRecords_page extends javax.swing.JFrame {
         String query="select bug_id,bug_title,bug_type,bug_status from bugs";
         PreparedStatement statement =con.prepareStatement(query);
         ResultSet rs=statement.executeQuery();
+//        PdfWriter.getInstance(document, new FileOutputStream("closed_bugs_report.pdf"));
+//                document.open();
+//
+//                // Add title and header
+//                document.add(new Paragraph("Closed Bugs Report\n"));
+//                document.add(new Paragraph("List of Bugs Closed in the System:\n"));
+//        
         while(rs.next()){
             String bugTitle=rs.getString("bug_title");
             int bugId=rs.getInt("bug_id");
@@ -68,6 +89,11 @@ public class BugsRecords_page extends javax.swing.JFrame {
             String bugStatus=rs.getString("bug_status");
             
             tableModel.addRow(new Object[]{bugId,bugTitle,bugType, bugStatus});
+//            document.add(new Paragraph("Bug Title: " + bugTitle));
+//                    document.add(new Paragraph("Description: " + bugDesc));
+//                    document.add(new Paragraph("Type: " + bugType));
+//                    document.add(new Paragraph("Posted At: " + postedAt));
+//                    document.add(new Paragraph("\n"));
 
             
         }

@@ -232,11 +232,11 @@ public class dashboarddeveloper extends javax.swing.JFrame {
         getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 720, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        jLabel15.setText("No. of Testers:");
+        jLabel15.setText("No. of Testers:  10");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 720, 180, -1));
 
         jLabel16.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        jLabel16.setText("No. of developers:");
+        jLabel16.setText("No. of developers:   10");
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 720, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
