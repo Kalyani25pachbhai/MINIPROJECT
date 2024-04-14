@@ -143,7 +143,12 @@ String dev_id=jtuser3.getText();
 
         ResultSet rs = pstmt.executeQuery();
                     JOptionPane.showMessageDialog(null, "Successful Assigned");
-
+        dashboarddeveloper dash = new dashboarddeveloper();
+        dash.setVisible(true);
+        dash.pack();
+        dash.setLocationRelativeTo(null);
+        //rgf.setDefaultCloseOpertaion(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
 
         // Close resources
 //        pstmt.close();

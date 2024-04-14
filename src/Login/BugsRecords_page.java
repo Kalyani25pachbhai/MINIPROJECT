@@ -5,6 +5,7 @@
 package Login;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.RowFilter;
 import java.sql.*;
@@ -38,38 +39,45 @@ public class BugsRecords_page extends javax.swing.JFrame {
      */
     public BugsRecords_page() throws FileNotFoundException {
          initComponents();
-        getContentPane().setLayout(new BorderLayout());
-         setTitle("Closed Bugs Report");
-        setSize(800, 900);
-                
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+getContentPane().setLayout(new BorderLayout());
 
-        textArea = new JTextArea();
-        textArea.setEditable(false);
+setTitle("Closed Bugs Report");
+setSize(800, 900);
+setDefaultCloseOperation(EXIT_ON_CLOSE);
+setLocationRelativeTo(null);
 
-        // Initialize table model and table
-        tableModel = new DefaultTableModel();
-        bugTable = new JTable(tableModel);
+textArea = new JTextArea();
+textArea.setEditable(false);
 
-        // Set column headers
-        tableModel.addColumn("Bug ID");
-        tableModel.addColumn("Bug Title");
-        tableModel.addColumn("Bug Type");
-        tableModel.addColumn("Bug Status");
+// Initialize table model and table
+tableModel = new DefaultTableModel();
+bugTable = new JTable(tableModel);
 
-        // Add table to a scroll pane
-        JScrollPane scrollPane = new JScrollPane(bugTable);
+// Set column headers
+tableModel.addColumn("Bug ID");
+tableModel.addColumn("Bug Title");
+tableModel.addColumn("Bug Type");
+tableModel.addColumn("Bug Status");
 
-        // Add scroll pane to the center of the frame
-        getContentPane().add(scrollPane, BorderLayout.CENTER);
+// Increase the size of each column
+bugTable.getColumnModel().getColumn(0).setPreferredWidth(100); // Bug ID
+bugTable.getColumnModel().getColumn(1).setPreferredWidth(300); // Bug Title
+bugTable.getColumnModel().getColumn(2).setPreferredWidth(150); // Bug Type
+bugTable.getColumnModel().getColumn(3).setPreferredWidth(150); // Bug Status
 
-        // Create panel to hold the table at the bottom
-        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        bottomPanel.add(scrollPane); // Add scroll pane to the panel
+// Add table to a scroll pane
+JScrollPane scrollPane = new JScrollPane(bugTable);
 
-        // Add the panel to the bottom of the frame
-        getContentPane().add(bottomPanel, BorderLayout.NORTH);
+// Create an empty panel to add some space above the table
+JPanel topPanel = new JPanel();
+topPanel.setPreferredSize(new Dimension(800, 300)); // Adjust height as needed
+
+// Add scroll pane to the center of the frame with some space above it
+getContentPane().add(topPanel, BorderLayout.NORTH);
+getContentPane().add(scrollPane, BorderLayout.CENTER);
+
+
+
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "root1234");
@@ -126,6 +134,7 @@ public class BugsRecords_page extends javax.swing.JFrame {
         jLabel1.setText("BUGS RECORDS");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Search Record");
 
         jtuser3.addActionListener(new java.awt.event.ActionListener() {
@@ -144,18 +153,19 @@ public class BugsRecords_page extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtuser3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(335, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(196, 196, 196)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jtuser3, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(1028, 1028, 1028))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,10 +174,10 @@ public class BugsRecords_page extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jtuser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(489, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
         );
 
         pack();

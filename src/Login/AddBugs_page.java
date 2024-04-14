@@ -163,7 +163,7 @@ PreparedStatement pstmt = con.prepareStatement(query);
 pstmt.setString(1, bug_title);
 pstmt.setString(2, bug_desc);
 pstmt.setString(3, "open");
-pstmt.setString(4, "frontend");
+pstmt.setString(4, bug_type);
 pstmt.setString(5, formattedDate);
 
 // Execute the query

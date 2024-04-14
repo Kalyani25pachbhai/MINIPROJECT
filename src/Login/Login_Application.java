@@ -142,6 +142,13 @@ public class Login_Application extends javax.swing.JFrame {
         if (rs.next()) {
             // User found, login successful
             JOptionPane.showMessageDialog(null, "Login Successful");
+                    dashboarddeveloper dev = new dashboarddeveloper();
+        dev.setVisible(true);
+        
+        dev.pack();
+        dev.setLocationRelativeTo(null);
+        //rgf.setDefaultCloseOpertaion(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
         } else {
             // No user found, login failed
             JOptionPane.showMessageDialog(null, "Wrong username or password.", "Error", JOptionPane.ERROR_MESSAGE);
