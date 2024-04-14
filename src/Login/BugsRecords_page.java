@@ -14,20 +14,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.Desktop;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -49,7 +40,7 @@ public class BugsRecords_page extends javax.swing.JFrame {
          initComponents();
         getContentPane().setLayout(new BorderLayout());
          setTitle("Closed Bugs Report");
-        setSize(400, 300);
+        setSize(800, 900);
                 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -78,7 +69,7 @@ public class BugsRecords_page extends javax.swing.JFrame {
         bottomPanel.add(scrollPane); // Add scroll pane to the panel
 
         // Add the panel to the bottom of the frame
-        getContentPane().add(bottomPanel, BorderLayout.SOUTH);
+        getContentPane().add(bottomPanel, BorderLayout.NORTH);
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "root1234");
@@ -128,8 +119,6 @@ public class BugsRecords_page extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jtuser3 = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,35 +139,6 @@ public class BugsRecords_page extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-            },
-            new String [] {
-                "Bug_Id", "Bug_Name", "Bug_Type", "Bug_status"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,16 +149,13 @@ public class BugsRecords_page extends javax.swing.JFrame {
                         .addGap(173, 173, 173)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtuser3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(115, Short.MAX_VALUE))
+                        .addGap(99, 99, 99)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtuser3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(335, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,9 +167,7 @@ public class BugsRecords_page extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jtuser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(489, Short.MAX_VALUE))
         );
 
         pack();
@@ -224,11 +179,11 @@ public class BugsRecords_page extends javax.swing.JFrame {
 
     private void jtuser3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtuser3KeyPressed
         // TODO add your handling code here:
-        DefaultTableModel obj=(DfaultTableModel) jTable2.getModel();
-        TableRowSorter<DefaultTableModel> obj1 = new TableRowSorter<>(model:obj);
-        jTable1.setRowSorter(sorter:obj1);
-        obj1.setRowSorter(filter:RowFilter.regexFilter(regex:jTextFieldi.getText()));
-        
+//        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
+bugTable.setRowSorter(sorter);
+sorter.setRowFilter(RowFilter.regexFilter(jtuser3.getText()));
+
     }//GEN-LAST:event_jtuser3KeyPressed
 
     /**
@@ -276,8 +231,6 @@ public class BugsRecords_page extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jtuser3;
     // End of variables declaration//GEN-END:variables
 }
