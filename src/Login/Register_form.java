@@ -38,12 +38,14 @@ public class Register_form extends javax.swing.JFrame {
         jtuser = new javax.swing.JTextField();
         jtuser2 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jtuser1 = new javax.swing.JTextField();
         jtuser3 = new javax.swing.JTextField();
         jtuser4 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButtonRegister = new javax.swing.JButton();
+        jButtonRegister1 = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         jtuser.addActionListener(new java.awt.event.ActionListener() {
@@ -63,15 +65,27 @@ public class Register_form extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1366, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton2.setText("jButton2");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jButton2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jButton2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 0, -1, -1));
@@ -121,7 +135,7 @@ public class Register_form extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 580, 140, 70));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 580, 140, 70));
 
         jButtonRegister.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
         jButtonRegister.setText("Register");
@@ -131,7 +145,17 @@ public class Register_form extends javax.swing.JFrame {
                 jButtonRegisterActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 582, 310, 70));
+        getContentPane().add(jButtonRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 580, 180, 70));
+
+        jButtonRegister1.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
+        jButtonRegister1.setText("Login");
+        jButtonRegister1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jButtonRegister1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegister1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonRegister1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 580, 190, 70));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/Untitled design (4).png"))); // NOI18N
         background.setText("jLabel6");
@@ -194,6 +218,17 @@ public class Register_form extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
+    private void jButtonRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegister1ActionPerformed
+        // TODO add your handling code here:
+        Login_Application reg = new Login_Application();
+        reg.setVisible(true);
+        
+        reg.pack();
+        reg.setLocationRelativeTo(null);
+        //rgf.setDefaultCloseOpertaion(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jButtonRegister1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -232,7 +267,9 @@ public class Register_form extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonRegister;
+    private javax.swing.JButton jButtonRegister1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jtuser;
