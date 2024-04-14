@@ -4,19 +4,6 @@
  */
 package Login;
 
-<<<<<<< HEAD
-import Login.jTable1;
-import Login.jTable1;
-import Login.jTable1;
-import Login.jTable1;
-import Login.jTextFieldi;
-import Login.jTextFieldi;
-import Login.jTextFieldi;
-import static java.util.Locale.filter;
-import javax.swing.RowFilter;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
-=======
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.RowFilter;
@@ -41,31 +28,23 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
->>>>>>> 6cea80d5c6e6bc1105f0c989a5eda5a5161d3800
 
 /**
  *
  * @author kpach
  */
 public class BugsRecords_page extends javax.swing.JFrame {
-<<<<<<< HEAD
-=======
     private Connection con;
         private JTable bugTable;
     private DefaultTableModel tableModel;
     private JTextArea textArea;
     private JButton generateButton;
     private JButton downloadButton;
->>>>>>> 6cea80d5c6e6bc1105f0c989a5eda5a5161d3800
 
     /**
      * Creates new form BugsRecords_page
      * @throws java.io.FileNotFoundException
      */
-<<<<<<< HEAD
-    public BugsRecords_page() {
-        initComponents();
-=======
     public BugsRecords_page() throws FileNotFoundException {
          initComponents();
         getContentPane().setLayout(new BorderLayout());
@@ -134,7 +113,6 @@ public class BugsRecords_page extends javax.swing.JFrame {
         }catch(SQLException e){
         }
                 
->>>>>>> 6cea80d5c6e6bc1105f0c989a5eda5a5161d3800
     }
 
     /**
