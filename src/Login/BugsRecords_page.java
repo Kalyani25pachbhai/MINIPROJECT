@@ -14,10 +14,20 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
-//import com.itextpdf.text.Document;
-//import com.itextpdf.text.Paragraph;
-//import com.itextpdf.text.pdf.PdfWriter;
-//import java.io.FileOutputStream;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
 
 /**
  *
@@ -28,15 +38,19 @@ public class BugsRecords_page extends javax.swing.JFrame {
         private JTable bugTable;
     private DefaultTableModel tableModel;
     private JTextArea textArea;
+    private JButton generateButton;
+    private JButton downloadButton;
 
     /**
      * Creates new form BugsRecords_page
+     * @throws java.io.FileNotFoundException
      */
-    public BugsRecords_page() {
+    public BugsRecords_page() throws FileNotFoundException {
          initComponents();
         getContentPane().setLayout(new BorderLayout());
          setTitle("Closed Bugs Report");
         setSize(400, 300);
+                
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -72,33 +86,31 @@ public class BugsRecords_page extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Failed to connect to the database: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }// 
         try{
-        String query="select bug_id,bug_title,bug_type,bug_status from bugs";
+        String query="select bug_id,bug_title,bug_desc,bug_type,bug_status,posted_at from bugs";
         PreparedStatement statement =con.prepareStatement(query);
         ResultSet rs=statement.executeQuery();
+//        Document document = new Document();
 //        PdfWriter.getInstance(document, new FileOutputStream("closed_bugs_report.pdf"));
 //                document.open();
 //
 //                // Add title and header
 //                document.add(new Paragraph("Closed Bugs Report\n"));
 //                document.add(new Paragraph("List of Bugs Closed in the System:\n"));
-//        
+        
         while(rs.next()){
             String bugTitle=rs.getString("bug_title");
             int bugId=rs.getInt("bug_id");
+            String bugDesc=rs.getString("bug_desc");
             String bugType=rs.getString("bug_type");
             String bugStatus=rs.getString("bug_status");
+            String postedAt=rs.getString("posted_at");
             
             tableModel.addRow(new Object[]{bugId,bugTitle,bugType, bugStatus});
-//            document.add(new Paragraph("Bug Title: " + bugTitle));
-//                    document.add(new Paragraph("Description: " + bugDesc));
-//                    document.add(new Paragraph("Type: " + bugType));
-//                    document.add(new Paragraph("Posted At: " + postedAt));
-//                    document.add(new Paragraph("\n"));
-
+            
             
         }
+
         }catch(SQLException e){
-            e.printStackTrace();
         }
                 
     }
@@ -182,7 +194,11 @@ public class BugsRecords_page extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                new BugsRecords_page().setVisible(true);
+                try {
+                    new BugsRecords_page().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(BugsRecords_page.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
