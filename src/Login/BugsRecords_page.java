@@ -4,61 +4,29 @@
  */
 package Login;
 
+import Login.jTable1;
+import Login.jTable1;
+import Login.jTable1;
+import Login.jTable1;
+import Login.jTextFieldi;
+import Login.jTextFieldi;
+import Login.jTextFieldi;
+import static java.util.Locale.filter;
 import javax.swing.RowFilter;
-import java.sql.*;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author kpach
  */
 public class BugsRecords_page extends javax.swing.JFrame {
-    private Connection con;
-        private JTable bugTable;
-    private DefaultTableModel tableModel;
 
     /**
      * Creates new form BugsRecords_page
      */
     public BugsRecords_page() {
         initComponents();
-        tableModel = new DefaultTableModel();
-        bugTable = new JTable(tableModel);
-        JScrollPane scrollPane = new JScrollPane(bugTable);
-        add(scrollPane);
-        bugTable.setVisible(true);
-        // Set column headers
-        tableModel.addColumn("Bug ID");
-
-        tableModel.addColumn("Bug Title");
-        tableModel.addColumn("Bug Type");
-        tableModel.addColumn("Bug Status");
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "root1234");
-        } catch (ClassNotFoundException | SQLException e) {
-            JOptionPane.showMessageDialog(null, "Failed to connect to the database: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }// 
-        try{
-        String query="select bug_id,bug_title,bug_type,bug_status from bugs";
-        PreparedStatement statement =con.prepareStatement(query);
-        ResultSet rs=statement.executeQuery();
-        while(rs.next()){
-            String bugTitle=rs.getString("bug_title");
-            int bugId=rs.getInt("bug_id");
-            String bugType=rs.getString("bug_type");
-            String bugStatus=rs.getString("bug_status");
-            
-            tableModel.addRow(new Object[]{bugId,bugTitle,bugType, bugStatus});
-
-            
-        }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-                
     }
 
     /**
@@ -70,44 +38,112 @@ public class BugsRecords_page extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        bg = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jtuser3 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1148, 861, 218, -1));
 
-        jLabel6.setFont(new java.awt.Font("Georgia", 1, 48)); // NOI18N
-        jLabel6.setText("BUG RECORDS");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 410, 70));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setText("BUGS RECORDS");
 
-        jLabel1.setFont(new java.awt.Font("Georgia", 0, 40)); // NOI18N
-        jLabel1.setText("Search Records");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setText("Search Record");
 
-        jTextField1.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jtuser3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jtuser3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 450, 50));
+        jtuser3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtuser3KeyPressed(evt);
+            }
+        });
 
-        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/Click here to new account (5).png"))); // NOI18N
-        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 768));
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, -1, -1));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+            },
+            new String [] {
+                "Bug_Id", "Bug_Name", "Bug_Type", "Bug_status"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtuser3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(115, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jtuser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(210, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jtuser3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtuser3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jtuser3ActionPerformed
+
+    private void jtuser3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtuser3KeyPressed
+        // TODO add your handling code here:
+        DefaultTableModel obj=(DfaultTableModel) jTable2.getModel();
+        TableRowSorter<DefaultTableModel> obj1 = new TableRowSorter<>(model:obj);
+        jTable1.setRowSorter(sorter:obj1);
+        obj1.setRowSorter(filter:RowFilter.regexFilter(regex:jTextFieldi.getText()));
+        
+    }//GEN-LAST:event_jtuser3KeyPressed
 
     /**
      * @param args the command line arguments
@@ -135,6 +171,7 @@ public class BugsRecords_page extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(BugsRecords_page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -145,11 +182,11 @@ public class BugsRecords_page extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bg;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jtuser3;
     // End of variables declaration//GEN-END:variables
 }
