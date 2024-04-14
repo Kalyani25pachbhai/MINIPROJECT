@@ -4,6 +4,7 @@
  */
 package Login;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import java.util.logging.Level;
@@ -43,6 +44,7 @@ public class Login_Application extends javax.swing.JFrame {
         bexit = new javax.swing.JButton();
         jpassword = new javax.swing.JPasswordField();
         jcshow_password = new javax.swing.JCheckBox();
+        jButton3 = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,7 +68,7 @@ public class Login_Application extends javax.swing.JFrame {
                 bloginActionPerformed(evt);
             }
         });
-        getContentPane().add(blogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 620, -1, -1));
+        getContentPane().add(blogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 550, -1, -1));
 
         bexit.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
         bexit.setText("Exit");
@@ -76,7 +78,7 @@ public class Login_Application extends javax.swing.JFrame {
                 bexitActionPerformed(evt);
             }
         });
-        getContentPane().add(bexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, -1, -1));
+        getContentPane().add(bexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 550, -1, -1));
 
         jpassword.setFont(new java.awt.Font("Georgia", 0, 36)); // NOI18N
         jpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -96,6 +98,16 @@ public class Login_Application extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jcshow_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(479, 450, 270, 40));
+
+        jButton3.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
+        jButton3.setText("Register");
+        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 550, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/Click here to new account (2).png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 768));
@@ -170,6 +182,18 @@ public class Login_Application extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jpasswordActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Register_form reg = new Register_form();
+        reg.setVisible(true);
+        
+        reg.pack();
+        reg.setLocationRelativeTo(null);
+        //rgf.setDefaultCloseOpertaion(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -209,6 +233,7 @@ public class Login_Application extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private javax.swing.JButton bexit;
     private javax.swing.JButton blogin;
+    private javax.swing.JButton jButton3;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JCheckBox jcshow_password;
     private javax.swing.JPasswordField jpassword;

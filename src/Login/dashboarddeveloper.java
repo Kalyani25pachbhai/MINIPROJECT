@@ -1,7 +1,25 @@
 package Login;
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -98,6 +116,7 @@ public class dashboarddeveloper extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -232,12 +251,20 @@ public class dashboarddeveloper extends javax.swing.JFrame {
         getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 720, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        jLabel15.setText("No. of Testers:");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 720, 180, -1));
+        jLabel15.setText("No. of Testers:  10");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 730, 260, -1));
 
         jLabel16.setFont(new java.awt.Font("Georgia", 1, 24)); // NOI18N
-        jLabel16.setText("No. of developers:");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 720, -1, -1));
+        jLabel16.setText("No. of developers:   10");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 690, -1, -1));
+
+        jButton10.setText("Get Bug Report");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 720, 120, 40));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -508,7 +535,12 @@ public class dashboarddeveloper extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        BugsRecords_page bug = new BugsRecords_page();
+        BugsRecords_page bug = null;
+        try {
+            bug = new BugsRecords_page();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(dashboarddeveloper.class.getName()).log(Level.SEVERE, null, ex);
+        }
         bug.setVisible(true);
         bug.pack();
         bug.setLocationRelativeTo(null);
@@ -516,6 +548,51 @@ public class dashboarddeveloper extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        try{
+        String query="select bug_id,bug_title,bug_desc,bug_type,bug_status,posted_at from bugs";
+        PreparedStatement statement =con.prepareStatement(query);
+        ResultSet rs=statement.executeQuery();
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream("closed_bugs_report.pdf"));
+                document.open();
+
+                // Add title and header
+                document.add(new Paragraph("Closed Bugs Report\n"));
+                document.add(new Paragraph("List of Bugs Closed in the System:\n"));
+        
+        while(rs.next()){
+            String bugTitle=rs.getString("bug_title");
+            int bugId=rs.getInt("bug_id");
+            String bugDesc=rs.getString("bug_desc");
+            String bugType=rs.getString("bug_type");
+            String bugStatus=rs.getString("bug_status");
+            String postedAt=rs.getString("posted_at");
+            
+
+            document.add(new Paragraph("Bug Title: " + bugTitle));
+                    document.add(new Paragraph("Description: " + bugDesc));
+                    document.add(new Paragraph("Type: " + bugType));
+                    document.add(new Paragraph("Posted At: " + postedAt));
+                    document.add(new Paragraph("\n"));
+
+            
+        }
+        document.close();
+         File file = new File("closed_bugs_report.pdf");
+    if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.OPEN)) {
+        Desktop.getDesktop().open(file);
+    } else {
+        System.out.println("Opening PDF not supported on this platform.");
+    }
+        }catch(SQLException e){
+        } catch (DocumentException ex) {
+            Logger.getLogger(BugsRecords_page.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(BugsRecords_page.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -556,6 +633,7 @@ public class dashboarddeveloper extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

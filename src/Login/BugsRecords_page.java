@@ -4,6 +4,7 @@
  */
 package Login;
 
+<<<<<<< HEAD
 import Login.jTable1;
 import Login.jTable1;
 import Login.jTable1;
@@ -15,18 +16,125 @@ import static java.util.Locale.filter;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+=======
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import javax.swing.RowFilter;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableModel;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+>>>>>>> 6cea80d5c6e6bc1105f0c989a5eda5a5161d3800
 
 /**
  *
  * @author kpach
  */
 public class BugsRecords_page extends javax.swing.JFrame {
+<<<<<<< HEAD
+=======
+    private Connection con;
+        private JTable bugTable;
+    private DefaultTableModel tableModel;
+    private JTextArea textArea;
+    private JButton generateButton;
+    private JButton downloadButton;
+>>>>>>> 6cea80d5c6e6bc1105f0c989a5eda5a5161d3800
 
     /**
      * Creates new form BugsRecords_page
+     * @throws java.io.FileNotFoundException
      */
+<<<<<<< HEAD
     public BugsRecords_page() {
         initComponents();
+=======
+    public BugsRecords_page() throws FileNotFoundException {
+         initComponents();
+        getContentPane().setLayout(new BorderLayout());
+         setTitle("Closed Bugs Report");
+        setSize(400, 300);
+                
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        textArea = new JTextArea();
+        textArea.setEditable(false);
+
+        // Initialize table model and table
+        tableModel = new DefaultTableModel();
+        bugTable = new JTable(tableModel);
+
+        // Set column headers
+        tableModel.addColumn("Bug ID");
+        tableModel.addColumn("Bug Title");
+        tableModel.addColumn("Bug Type");
+        tableModel.addColumn("Bug Status");
+
+        // Add table to a scroll pane
+        JScrollPane scrollPane = new JScrollPane(bugTable);
+
+        // Add scroll pane to the center of the frame
+        getContentPane().add(scrollPane, BorderLayout.CENTER);
+
+        // Create panel to hold the table at the bottom
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        bottomPanel.add(scrollPane); // Add scroll pane to the panel
+
+        // Add the panel to the bottom of the frame
+        getContentPane().add(bottomPanel, BorderLayout.SOUTH);
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "root1234");
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Failed to connect to the database: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }// 
+        try{
+        String query="select bug_id,bug_title,bug_desc,bug_type,bug_status,posted_at from bugs";
+        PreparedStatement statement =con.prepareStatement(query);
+        ResultSet rs=statement.executeQuery();
+//        Document document = new Document();
+//        PdfWriter.getInstance(document, new FileOutputStream("closed_bugs_report.pdf"));
+//                document.open();
+//
+//                // Add title and header
+//                document.add(new Paragraph("Closed Bugs Report\n"));
+//                document.add(new Paragraph("List of Bugs Closed in the System:\n"));
+        
+        while(rs.next()){
+            String bugTitle=rs.getString("bug_title");
+            int bugId=rs.getInt("bug_id");
+            String bugDesc=rs.getString("bug_desc");
+            String bugType=rs.getString("bug_type");
+            String bugStatus=rs.getString("bug_status");
+            String postedAt=rs.getString("posted_at");
+            
+            tableModel.addRow(new Object[]{bugId,bugTitle,bugType, bugStatus});
+            
+            
+        }
+
+        }catch(SQLException e){
+        }
+                
+>>>>>>> 6cea80d5c6e6bc1105f0c989a5eda5a5161d3800
     }
 
     /**
@@ -176,7 +284,12 @@ public class BugsRecords_page extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BugsRecords_page().setVisible(true);
+                
+                try {
+                    new BugsRecords_page().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(BugsRecords_page.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
